@@ -20,6 +20,9 @@ func (s *Service) String() string {
 }
 
 func (s *Service) Validate() error {
+	if s.ID == 0 {
+		return errors.New("Service must have an ID")
+	}
 	if s.Name == "" {
 		return errors.New("Service name is required")
 	}
