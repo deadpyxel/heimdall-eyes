@@ -1,6 +1,7 @@
 package services
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/deadpyxel/heimdall-eyes/pkg/models"
@@ -26,6 +27,9 @@ func (sm *ServiceManager) AddService(svc models.Service) error {
 }
 
 func (sm *ServiceManager) RemoveService(id int) error {
+	if len(sm.services) == 0 {
+		return errors.New("Cannot remove service from empty list")
+	}
 	for i, svc := range sm.services {
 		if svc.ID == id {
 			sm.services = append(sm.services[:i], sm.services[i+1:]...)
