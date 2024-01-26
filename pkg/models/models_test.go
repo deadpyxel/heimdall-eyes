@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestValidate(t *testing.T) {
+func TestServiceValidate(t *testing.T) {
 	t.Run("When Service has no ID Validate returns and error", func(t *testing.T) {
 		svc := Service{}
 		err := svc.Validate()
